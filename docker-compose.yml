@@ -1,0 +1,16 @@
+version: '2'
+services:
+  postgres:
+    image: postgres:9.1
+    environment:
+      POSTGRES_USER: miggy
+      POSTGRES_PASSWORD: miggy
+  mysql:
+    image: mysql:5.5
+    environment:
+      MYSQL_ROOT_PASSWORD: miggy
+      MYSQL_DATABASE: miggy
+      MYSQL_USER: miggy
+      MYSQL_PASSWORD: miggy
+  oracle:
+    image: wnameless/oracle-xe-11g
