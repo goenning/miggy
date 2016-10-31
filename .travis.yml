@@ -12,9 +12,8 @@ services:
   - docker
 
 before_script:
-  - git clone git@github.com:CORaleigh/linux-oracle-client.git
-  - export OCI_LIB_DIR=/home/travis/build/goenning/miggy/linux-oracle-client/instantclient_12_1
-  - export OCI_INC_DIR=/home/travis/build/goenning/miggy/linux-oracle-client/instantclient_12_1/sdk/include
+  - git clone https://github.com/CORaleigh/linux-oracle-client.git /opt/oracle/
+  - mv /opt/oracle/instantclient_12_1 /opt/oracle/instantclient
   - npm run lint
 
 notifications:
