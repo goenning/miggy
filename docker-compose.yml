@@ -2,11 +2,15 @@ version: '2'
 services:
   postgres:
     image: postgres:9.1
+    ports:
+      - 51000:5432
     environment:
       POSTGRES_USER: miggy
       POSTGRES_PASSWORD: miggy
   mysql:
     image: mysql:5.5
+    ports:
+      - 51001:3306
     environment:
       MYSQL_ROOT_PASSWORD: miggy
       MYSQL_DATABASE: miggy
@@ -14,3 +18,5 @@ services:
       MYSQL_PASSWORD: miggy
   oracle:
     image: wnameless/oracle-xe-11g
+    ports:
+      - 51002:1521
