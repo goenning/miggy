@@ -5,6 +5,7 @@
         "noImplicitAny": true,
         "sourceMap": false,
         "strictNullChecks": true,
-        "outDir": "dist"
+        "outDir": "dist",
+        "types": [ "mocha" ]
     }
 }
