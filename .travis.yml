@@ -11,9 +11,11 @@ sudo: required
 services:
   - docker
 
-before_script:
+before_install:
   - git clone https://github.com/CORaleigh/linux-oracle-client.git /opt/oracle/
   - mv /opt/oracle/instantclient_12_1 /opt/oracle/instantclient
+
+before_script:
   - npm run lint
 
 notifications:
