@@ -1,24 +1,35 @@
-import { ColumnExpression, DecimalColumnExpression } from "./ColumnExpression";
+import {
+  AddColumnExpression,
+  AddDecimalColumnExpression,
+  DropColumnExpression
+} from "./ColumnExpression";
+import { Expression } from "./Expression";
 
 export class ColumnExpressionRoot {
-  constructor(private columns: ColumnExpression[]) {
+  constructor(private columns: Expression[]) {
   }
 
-  id(): ColumnExpression {
-    const column = new ColumnExpression("id", "integer");
+  id() {
+    const column = new AddColumnExpression("id", "integer");
     column.notNull();
     this.columns.push(column);
     return column;
   };
 
-  string(columnName: string): ColumnExpression {
-    const column = new ColumnExpression(columnName, "string");
+  string(columnName: string) {
+    const column = new AddColumnExpression(columnName, "string");
     this.columns.push(column);
     return column;
   };
 
-  decimal(columnName: string): DecimalColumnExpression {
-    const column = new DecimalColumnExpression(columnName, "decimal");
+  decimal(columnName: string) {
+    const column = new AddDecimalColumnExpression(columnName, "decimal");
+    this.columns.push(column);
+    return column;
+  };
+
+  drop(columnName: string) {
+    const column = new DropColumnExpression(columnName);
     this.columns.push(column);
     return column;
   };

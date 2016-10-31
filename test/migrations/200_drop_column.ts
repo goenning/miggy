@@ -1,22 +1,27 @@
 import { Migration } from "../../src/Migration";
 
-class AddProductPrice extends Migration {
+class DropDescriptionColumn extends Migration {
   up() {
     this.alter.table("products", (t) => {
-      t.decimal("price").precision(5).scale(2);
+      t.drop("description");
     });
+  }
+
+  down() {
+
   }
 }
 
 const fixture = {
-  migration: AddProductPrice,
-  expect: [{
+  migration: DropDescriptionColumn,
+  up: [{
     _command: "alter_table",
     _name: "products",
     _columns: [
-      { _name: "price", _type: "decimal", _precision: 5, _scale: 2, _notNull: false }
+      { _command: "drop", _name: "description" }
     ]
-  }]
+  }],
+  down: []
 };
 
 export default fixture;

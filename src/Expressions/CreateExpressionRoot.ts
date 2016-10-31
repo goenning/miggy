@@ -1,14 +1,14 @@
 import { MigrationContext } from "../MigrationContext";
 import { Expression } from "./Expression";
 import { ColumnExpressionRoot } from "./ColumnExpressionRoot";
-import { ColumnExpression } from "./ColumnExpression";
+import { DropTableExpression } from "./DropExpressionRoot";
 
 export type CreateTableOptions = (columns: ColumnExpressionRoot) => void;
 
 export class CreateTableExpression extends Expression {
   public _command: string;
   public _name: string;
-  public _columns: ColumnExpression[];
+  public _columns: Expression[];
 
   constructor(tableName: string, options: CreateTableOptions) {
     super();
@@ -16,6 +16,10 @@ export class CreateTableExpression extends Expression {
     this._name = tableName;
     this._columns = [];
     options(new ColumnExpressionRoot(this._columns));
+  }
+
+  public reverse() {
+    return new DropTableExpression(this._name);
   }
 }
 

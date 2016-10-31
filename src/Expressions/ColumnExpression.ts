@@ -2,13 +2,26 @@ import { Expression } from "./Expression";
 
 type ColumnType = "integer" | "string" | "decimal";
 
-export class ColumnExpression extends Expression {
+export class DropColumnExpression extends Expression {
+  private _command: string;
+  private _name: string;
+
+  constructor(name: string) {
+    super();
+    this._command = "drop";
+    this._name = name;
+  }
+}
+
+export class AddColumnExpression extends Expression {
+  private _command: string;
   private _name: string;
   private _type: ColumnType;
   private _notNull: boolean;
 
   constructor(name: string, type: ColumnType) {
     super();
+    this._command = "add";
     this._name = name;
     this._type = type;
     this.nullable();
@@ -18,13 +31,18 @@ export class ColumnExpression extends Expression {
     this._notNull = true;
     return this;
   }
+
   public nullable() {
     this._notNull = false;
     return this;
   }
+
+  public reverse() {
+    return new DropColumnExpression(this._name);
+  }
 }
 
-export class DecimalColumnExpression extends ColumnExpression {
+export class AddDecimalColumnExpression extends AddColumnExpression {
   private _precision: number;
   private _scale: number;
 

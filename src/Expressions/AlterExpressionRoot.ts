@@ -1,21 +1,23 @@
 import { MigrationContext } from "../MigrationContext";
 import { Expression } from "./Expression";
 import { ColumnExpressionRoot } from "./ColumnExpressionRoot";
-import { ColumnExpression } from "./ColumnExpression";
 
 export type AlterTableOptions = (columns: ColumnExpressionRoot) => void;
 
 export class AlterTableExpression extends Expression {
   public _command: string;
   public _name: string;
-  public _columns: ColumnExpression[];
+  private _columns: Expression[];
 
-  constructor(tableName: string, options: AlterTableOptions) {
+  constructor(tableName: string, columns: Expression[]) {
     super();
     this._command = "alter_table";
     this._name = tableName;
-    this._columns = [];
-    options(new ColumnExpressionRoot(this._columns));
+    this._columns = columns;
+  }
+
+  public reverse() {
+    return new AlterTableExpression(this._name, this._columns.map(x => x.reverse()));
   }
 }
 
@@ -25,7 +27,9 @@ export class AlterExpressionRoot {
   }
 
   public table(tableName: string, options: AlterTableOptions) {
-    const expression = new AlterTableExpression(tableName, options);
+    const columns: Expression[] = [];
+    options(new ColumnExpressionRoot(columns));
+    const expression = new AlterTableExpression(tableName, columns);
     this.context.add(expression);
     return expression;
   }
