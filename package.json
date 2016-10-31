@@ -1,12 +1,19 @@
 {
   "name": "miggy",
   "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
+  "description": "Placeholder",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "mocha dist/test --recursive"
+    "test": "tsc && mocha dist/test --recursive"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/com:goenning/miggy.git"
+  },
+  "bugs": {
+    "url": "http://github.com/com:goenning/miggy/issues"
+  },
+  "author": "Guilherme Oenning <me@goenning.net> (http://goenning.net/)",
   "license": "ISC",
   "devDependencies": {
     "@types/chai": "^3.4.34",

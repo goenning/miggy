@@ -1,4 +1,4 @@
-import { Expression } from "./Expressions/Expression";
+import { Expression } from "./expressions/Expression";
 
 export function jsonify(expressions: Expression[]) {
   return expressions;

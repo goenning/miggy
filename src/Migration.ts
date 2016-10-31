@@ -1,8 +1,8 @@
 import { MigrationContext } from "./MigrationContext";
-import { CreateExpressionRoot } from "./Expressions/CreateExpressionRoot";
-import { AlterExpressionRoot } from "./Expressions/AlterExpressionRoot";
-import { RenameExpressionRoot } from "./Expressions/RenameExpressionRoot";
-import { DropExpressionRoot } from "./Expressions/DropExpressionRoot";
+import { CreateExpressionRoot } from "./expressions/CreateExpressionRoot";
+import { AlterExpressionRoot } from "./expressions/AlterExpressionRoot";
+import { RenameExpressionRoot } from "./expressions/RenameExpressionRoot";
+import { DropExpressionRoot } from "./expressions/DropExpressionRoot";
 
 export abstract class Migration {
   public context: MigrationContext;

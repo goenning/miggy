@@ -1,4 +1,4 @@
-import { Expression } from "./Expressions/Expression";
+import { Expression } from "./expressions/Expression";
 import { Migration } from "./Migration";
 
 export class MigrationContext {
