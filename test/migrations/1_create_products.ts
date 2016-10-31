@@ -1,8 +1,10 @@
-import { Schema } from "../../src/";
+import { Migration } from "../../src/Migration";
 
-export function up(schema: Schema) {
-  return schema.createTable("products", (t) => {
-    t.id();
-    t.string("name");
-  });
+export class CreateProducts extends Migration {
+  up() {
+    this.create.table("products", (t) => {
+      t.id();
+      t.string("name").notNull();
+    });
+  }
 }
