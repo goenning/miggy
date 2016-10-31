@@ -1,6 +1,6 @@
 {
   "name": "miggy",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "SQL Database Migration made easy with TypeScript",
   "main": "./dist/src/index.js",
   "typings": "./dist/src/index.d.ts",
@@ -11,10 +11,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/com:goenning/miggy.git"
+    "url": "https://github.com/goenning/miggy.git"
   },
   "bugs": {
-    "url": "http://github.com/com:goenning/miggy/issues"
+    "url": "http://github.com/goenning/miggy/issues"
   },
   "author": "Guilherme Oenning <me@goenning.net> (http://goenning.net/)",
   "devDependencies": {
