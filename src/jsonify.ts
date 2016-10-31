@@ -1,3 +1,5 @@
-export function jsonify(t: any) {
-  return t;
+import { Expression } from "./Expressions/Expression";
+
+export function jsonify(expressions: Expression[]) {
+  return expressions;
 }

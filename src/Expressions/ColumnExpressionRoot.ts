@@ -1,6 +1,6 @@
-import { ColumnExpression } from "./Column/ColumnExpression";
+import { ColumnExpression, DecimalColumnExpression } from "./ColumnExpression";
 
-export class ColumnExpressionBuilder {
+export class ColumnExpressionRoot {
   constructor(private columns: ColumnExpression[]) {
   }
 
@@ -13,6 +13,12 @@ export class ColumnExpressionBuilder {
 
   string(columnName: string): ColumnExpression {
     const column = new ColumnExpression(columnName, "string");
+    this.columns.push(column);
+    return column;
+  };
+
+  decimal(columnName: string): DecimalColumnExpression {
+    const column = new DecimalColumnExpression(columnName, "decimal");
     this.columns.push(column);
     return column;
   };
