@@ -1,11 +1,14 @@
 {
   "name": "miggy",
   "version": "0.0.1",
-  "description": "Placeholder",
-  "main": "dist/index.js",
+  "description": "SQL Database Migration made easy with TypeScript",
+  "main": "./dist/src/index.js",
+  "typings": "./dist/src/index.d.ts",
   "scripts": {
+    "lint": "tslint src/**/*.ts test/**/*.ts",
     "test": "tsc && mocha dist/test --recursive"
   },
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/com:goenning/miggy.git"
@@ -14,7 +17,6 @@
     "url": "http://github.com/com:goenning/miggy/issues"
   },
   "author": "Guilherme Oenning <me@goenning.net> (http://goenning.net/)",
-  "license": "ISC",
   "devDependencies": {
     "@types/chai": "^3.4.34",
     "@types/mocha": "^2.2.32",
@@ -27,6 +29,8 @@
     "mysql": "^2.11.1",
     "oracledb": "^1.11.0",
     "pg": "^6.1.0",
-    "sqlite3": "^3.1.8"
+    "sqlite3": "^3.1.8",
+    "tslint": "^3.15.1",
+    "typescript": "^2.0.6"
   }
 }
