@@ -23,7 +23,7 @@ export class CreateTableExpression extends Expression {
   }
 
   public toSql(dialect: BaseDialect): string[] {
-    const toColumn = (x: any) => `${x._name} ${x._type}`;
+    const toColumn = (x: Expression) => x.toSql(dialect);
     return [ `CREATE TABLE ${this._name} (${this._columns.map(toColumn).join(", ")})` ];
   }
 }

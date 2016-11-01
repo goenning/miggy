@@ -1,10 +1,11 @@
 import { Expression } from "./Expression";
+import { BaseDialect } from "../dialects/BaseDialect";
 
 type ColumnType = "integer" | "string" | "decimal";
 
 export class DropColumnExpression extends Expression {
-  private _command: string;
-  private _name: string;
+  protected _command: string;
+  protected _name: string;
 
   constructor(name: string) {
     super();
@@ -14,10 +15,10 @@ export class DropColumnExpression extends Expression {
 }
 
 export class AddColumnExpression extends Expression {
-  private _command: string;
-  private _name: string;
-  private _type: ColumnType;
-  private _notNull: boolean;
+  protected _command: string;
+  protected _name: string;
+  protected _type: ColumnType;
+  protected _notNull: boolean;
 
   constructor(name: string, type: ColumnType) {
     super();
@@ -40,20 +41,28 @@ export class AddColumnExpression extends Expression {
   public reverse() {
     return new DropColumnExpression(this._name);
   }
+
+  public toSql(dialect: BaseDialect): string[] {
+    return [ `${this._name} ${this._type}` ];
+  }
 }
 
 export class AddStringColumnExpression extends AddColumnExpression {
-  private _length: number;
+  protected _length: number;
 
   constructor(name: string, length: number) {
     super(name, "string");
     this._length = length;
   }
+
+  public toSql(dialect: BaseDialect): string[] {
+    return [ `${this._name} ${dialect.mapToSqlType(this._type)}(${this._length})` ];
+  }
 }
 
 export class AddDecimalColumnExpression extends AddColumnExpression {
-  private _precision: number;
-  private _scale: number;
+  protected _precision: number;
+  protected _scale: number;
 
   constructor(name: string) {
     super(name, "decimal");
