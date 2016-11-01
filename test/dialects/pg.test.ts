@@ -2,7 +2,6 @@ import { PgDialect } from "../../src/dialects/PgDialect";
 import { CreateTableExpression } from "../../src/expressions/CreateExpressionRoot";
 import { AddColumnExpression } from "../../src/expressions/ColumnExpression";
 import { expect } from "chai";
-const one = require("../migrations/100_create_table");
 
 describe("PgDialect", () => {
   it("simple", () => {

@@ -1,6 +1,7 @@
 import {
   AddColumnExpression,
   AddDecimalColumnExpression,
+  AddStringColumnExpression,
   DropColumnExpression
 } from "./ColumnExpression";
 import { Expression } from "./Expression";
@@ -16,14 +17,14 @@ export class ColumnExpressionRoot {
     return column;
   };
 
-  string(columnName: string) {
-    const column = new AddColumnExpression(columnName, "string");
+  string(columnName: string, length: number) {
+    const column = new AddStringColumnExpression(columnName, length);
     this.columns.push(column);
     return column;
   };
 
   decimal(columnName: string) {
-    const column = new AddDecimalColumnExpression(columnName, "decimal");
+    const column = new AddDecimalColumnExpression(columnName);
     this.columns.push(column);
     return column;
   };

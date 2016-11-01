@@ -42,9 +42,22 @@ export class AddColumnExpression extends Expression {
   }
 }
 
+export class AddStringColumnExpression extends AddColumnExpression {
+  private _length: number;
+
+  constructor(name: string, length: number) {
+    super(name, "string");
+    this._length = length;
+  }
+}
+
 export class AddDecimalColumnExpression extends AddColumnExpression {
   private _precision: number;
   private _scale: number;
+
+  constructor(name: string) {
+    super(name, "decimal");
+  }
 
   scale(scale: number) {
     this._scale = scale;
